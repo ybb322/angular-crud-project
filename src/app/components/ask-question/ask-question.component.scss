@@ -1,0 +1,42 @@
+.ask-question {
+  &-container {
+    padding: 20px;
+    width: 50%;
+    background-color: rgb(214, 214, 214);
+  }
+  &__title {
+    font-size: 24px;
+  }
+  &__inputs {
+    margin-top: 8px;
+  }
+  &__description {
+    resize: none;
+  }
+  &__details {
+    margin-top: 12px;
+    font-size: 20px;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-input,
+.tags-input {
+  margin-top: 4px;
+  font-size: 16px;
+}
+
+.submit-button {
+  margin-top: 32px;
+  width: 100px;
+  font-size: 20px;
+}
+
+textarea {
+  font-size: 16px;
+  margin-top: 4px;
+}

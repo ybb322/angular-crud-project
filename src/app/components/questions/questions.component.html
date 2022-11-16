@@ -1,0 +1,11 @@
+<div class="questions-container">
+  <h1 class="questions__title">Top Questions</h1>
+  <div class="questions">
+    <app-question
+      *ngFor="let question of questions; let i = index"
+      [question]="question"
+      [index]="i"
+    ></app-question>
+  </div>
+</div>
+<!-- <router-outlet></router-outlet> -->

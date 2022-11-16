@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="question">
+    <h1 class="question__title">{{ question.title }}</h1>
+    <p class="question__description">{{ question.description }}</p>
+    <div class="question__details">
+      <p class="question__author">by {{ question.author }}</p>
+      <p class="question__date">{{ question.date }}</p>
+    </div>
+  </div>
+  <div class="no-answers" *ngIf="!question.answers.length">
+    There are no answers yet. Be the first one to help!
+  </div>
+  <div class="add-answer-container">
+    <h2 class="add-answer__title">Your answer</h2>
+    <form class="add-answer__form" action="">
+      <textarea
+        class="add-answer__text"
+        name=""
+        id=""
+        cols="30"
+        rows="10"
+      ></textarea>
+      <button class="add-answer__button">Post your answer</button>
+    </form>
+  </div>
+</div>
