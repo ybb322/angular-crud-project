@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0 auto;
+  height: 6000px;
+}
+
+body,
+button,
+textarea,
+input {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+button,
+input:active,
+:focus,
+:hover {
+  outline: none;
+}
