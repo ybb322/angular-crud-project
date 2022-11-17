@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { IQuestion } from 'src/app/interfaces/question.interface';
 
@@ -9,7 +9,7 @@ import { IQuestion } from 'src/app/interfaces/question.interface';
   styleUrls: ['./ask-question.component.scss'],
 })
 export class AskQuestionComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
+  constructor() {}
 
   questionForm: FormGroup = new FormGroup({
     title: new FormControl(),

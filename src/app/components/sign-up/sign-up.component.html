@@ -1,14 +1,29 @@
 <div class="sign-up">
   <h1 class="sign-up__title">Sign Up</h1>
-  <form class="sign-up__form">
+  <form class="sign-up__form" [formGroup]="signUpForm">
     <p>Username</p>
-    <input type="email" class="sign-up__nickname" />
+    <input type="name" class="sign-up__nickname" formControlName="name" />
+    <div *ngIf="name?.errors?.['minlength']">
+      Username must be at least 4 characters long.
+    </div>
     <p>Email</p>
-    <input type="email" class="sign-up__email" />
+    <input type="email" class="sign-up__email" formControlName="email" />
+    <div *ngIf="email?.errors?.['email']">Enter correct email.</div>
     <p>Password</p>
-    <input type="password" class="sign-up__password" />
+    <input
+      type="password"
+      class="sign-up__password"
+      formControlName="password"
+    />
+    <div *ngIf="password?.errors?.['pattern']">
+      Password must be min. 6 characters long, containing 1 letter and 1 number.
+    </div>
     <p>Repeat password</p>
-    <input type="password" class="sign-up__password" />
-    <button class="sign-up__button">Log In</button>
+    <input
+      type="password"
+      class="sign-up__password"
+      formControlName="repeatPassword"
+    />
+    <button class="sign-up__button" (click)="signUp()">Sign Up</button>
   </form>
 </div>
