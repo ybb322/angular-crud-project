@@ -10,9 +10,15 @@
   <div class="no-answers" *ngIf="!question.answers.length">
     There are no answers yet. Be the first one to help!
   </div>
+
+  <app-answer
+    *ngFor="let answer of question.answers; let i = index"
+    [answer]="answer"
+  ></app-answer>
+
   <div class="add-answer-container">
     <h2 class="add-answer__title">Your answer</h2>
-    <form class="add-answer__form" action="">
+    <form class="add-answer__form">
       <textarea
         class="add-answer__text"
         name=""

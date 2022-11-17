@@ -19,7 +19,13 @@ export class QuestionsService {
       //TODO fix the type
       date: '15 minutes ago',
       //TODO fix the type
-      answers: [{}],
+      answers: [
+        {
+          body: 'This is my answer to your question. This is my answer to your question. This is my answer to your question. This is my answer to your question. ',
+          author: 'Answerer1',
+          date: '15 minutes ago',
+        },
+      ],
     },
     {
       id: 2,

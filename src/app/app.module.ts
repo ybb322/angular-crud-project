@@ -10,6 +10,9 @@ import { QuestionsComponent } from './components/questions/questions.component';
 import { QuestionComponent } from './components/question/question.component';
 import { QuestionPageComponent } from './components/question-page/question-page.component';
 import { AskQuestionComponent } from './components/ask-question/ask-question.component';
+import { AnswerComponent } from './components/answer/answer.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { AskQuestionComponent } from './components/ask-question/ask-question.com
     QuestionComponent,
     QuestionPageComponent,
     AskQuestionComponent,
+    AnswerComponent,
+    LoginComponent,
+    SignUpComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

@@ -6,7 +6,9 @@
 .question {
   background-color: rgb(214, 214, 214);
   padding: 16px 32px;
-
+  border-bottom: 1px solid grey;
+  border-right: 1px solid grey;
+  border-left: 1px solid grey;
   &__title {
     font-size: 30px;
     margin-bottom: 24px;
@@ -25,7 +27,9 @@
   background-color: rgb(255, 231, 231);
   font-size: 20px;
   padding: 16px 32px;
-  border: 1px solid grey;
+  border-bottom: 1px solid grey;
+  border-right: 1px solid grey;
+  border-left: 1px solid grey;
 }
 
 .add-answer {

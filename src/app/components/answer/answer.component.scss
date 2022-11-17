@@ -1,0 +1,16 @@
+.answer {
+  background-color: antiquewhite;
+  padding: 16px 32px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgb(177, 177, 177);
+  border-right: 1px solid rgb(177, 177, 177);
+  border-left: 1px solid rgb(177, 177, 177);
+
+  &__text {
+    font-size: 20px;
+  }
+  &__details {
+    align-self: end;
+  }
+}

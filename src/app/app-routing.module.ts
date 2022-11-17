@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { QuestionPageComponent } from './components/question-page/question-page.component';
 import { AskQuestionComponent } from './components/ask-question/ask-question.component';
 import { QuestionsComponent } from './components/questions/questions.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 const routes: Routes = [
   {
@@ -16,6 +18,14 @@ const routes: Routes = [
   {
     path: 'ask-question',
     component: AskQuestionComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent,
   },
 ];
 
