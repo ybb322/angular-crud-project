@@ -1,0 +1,15 @@
+.user {
+  &-container {
+    margin: 0 auto;
+    width: 60%;
+    background-color: rgb(214, 214, 214);
+    padding: 32px;
+  }
+  &__name {
+    padding-top: 20px;
+    margin-bottom: 36px;
+  }
+  &__email {
+    font-size: 24px;
+  }
+}

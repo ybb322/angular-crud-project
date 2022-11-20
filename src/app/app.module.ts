@@ -13,6 +13,8 @@ import { AskQuestionComponent } from './components/ask-question/ask-question.com
 import { AnswerComponent } from './components/answer/answer.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { UserPageComponent } from './components/user-page/user-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,15 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     AnswerComponent,
     LoginComponent,
     SignUpComponent,
+    UserPageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

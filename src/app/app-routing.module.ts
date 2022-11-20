@@ -5,6 +5,7 @@ import { AskQuestionComponent } from './components/ask-question/ask-question.com
 import { QuestionsComponent } from './components/questions/questions.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { UserPageComponent } from './components/user-page/user-page.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'sign-up',
     component: SignUpComponent,
+  },
+  {
+    path: 'user-page',
+    component: UserPageComponent,
   },
 ];
 

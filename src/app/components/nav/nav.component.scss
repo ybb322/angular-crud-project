@@ -23,9 +23,11 @@
     cursor: pointer;
   }
   &__search {
-    width: 200px;
-    font-size: 24px;
+    width: 240px;
+    padding: 4px;
+    font-size: 20px;
     margin-left: 40px;
+    margin-right: 16px;
   }
 
   &__actions .button-ask {

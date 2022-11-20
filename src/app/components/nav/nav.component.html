@@ -1,16 +1,26 @@
+<!--TODO: fix navigation buttons blinking on refresh-->
+<!--TODO: fix rxjs subscriptions bugs-->
 <div class="nav-container">
   <div class="nav__logo-search">
     <span class="nav__logo" routerLink="/">HelpDesk</span>
     <input type="search" class="nav__search" placeholder="Search..." />
-  </div>
-  <div class="nav__actions">
     <button class="nav__button button-ask" routerLink="/ask-question">
       Ask Question
     </button>
-    <button class="nav__button button-login" routerLink="/login">Log In</button>
-    <button class="nav__button button-signup" routerLink="/sign-up">
-      Sign Up
-    </button>
+  </div>
+  <div class="nav__actions">
+    <ng-container *ngIf="!isAuth; else elseBlock" class="buttons__default">
+      <button class="nav__button button-login" routerLink="/login">
+        Log In
+      </button>
+      <button class="nav__button button-signup" routerLink="/sign-up">
+        Sign Up
+      </button>
+    </ng-container>
+    <ng-template #elseBlock>
+      <button class="nav__button" (click)="logout()">Log Out</button>
+      <button class="nav__button" routerLink="/user-page">My Profile</button>
+    </ng-template>
   </div>
 </div>
 <router-outlet></router-outlet>

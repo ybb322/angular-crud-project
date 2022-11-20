@@ -1,3 +1,4 @@
+<!--TODO: fix Enter.event: Firebase error-->
 <div class="login">
   <h1 class="login__title">Log In</h1>
   <form class="login__form" [formGroup]="loginForm">
@@ -5,6 +6,6 @@
     <input type="email" class="login__email" formControlName="email" />
     <p>Password</p>
     <input type="password" class="login__password" formControlName="password" />
-    <button class="login__button" (click)="login()">Log In</button>
+    <button class="login__button" (click)="onSubmit()">Log In</button>
   </form>
 </div>

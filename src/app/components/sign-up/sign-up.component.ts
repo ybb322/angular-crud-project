@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   signUpForm: FormGroup = new FormGroup({
     name: new FormControl('', {
@@ -46,27 +46,14 @@ export class SignUpComponent implements OnInit {
   }
   ngOnInit(): void {}
 
-  onSubmit() {}
-
-  signUp() {
-    console.log(this.signUpForm);
-
-    const auth = getAuth();
-    createUserWithEmailAndPassword(
-      auth,
+  onSubmit() {
+    this.authService.signUp(
       this.signUpForm.value.email,
-      this.signUpForm.value.password
-    )
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(error);
-        // ..
-      });
+      this.signUpForm.value.password,
+      this.signUpForm.value.name
+    );
+  }
+  checkAuth() {
+    this.authService.checkAuth();
   }
 }

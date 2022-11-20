@@ -14,7 +14,6 @@ export class QuestionsService {
       title: "overflow:hidden doesn't work as expected",
       description:
         "I was working on a slider of images and decided to use overflow:hidden to hide inactive slides. But it doesn't work as expected.",
-      tags: [],
       author: 'JohnDoe2022',
       //TODO fix the type
       date: '15 minutes ago',
@@ -32,7 +31,6 @@ export class QuestionsService {
       title: "Can anyone explain how 'position: absolute' works?",
       description:
         "I was going through the w3schools documentation a couple of times, but I still can't wrap my head around it. Please explain it as simple as you can.",
-      tags: [],
       author: 'PaulSmith_01',
       //TODO fix the type
       date: 'yesterday',
@@ -44,7 +42,6 @@ export class QuestionsService {
       title: 'fatal: not a git repository',
       description:
         "I caught this error while setting up my project locally. I've created a folder and remote repository, followed the instructions, but for some reason caught this error.",
-      tags: [],
       author: 'JakeWatson_99',
       //TODO fix the type
       date: '2 hours ago',
