@@ -7,26 +7,27 @@
       <!-- <p class="question__date">{{ question.date }}</p> -->
     </div>
   </div>
-  <!-- <div class="no-answers" *ngIf="!question.answers.length">
+  <div class="no-answers" *ngIf="!question.answers">
     There are no answers yet. Be the first one to help!
-  </div> -->
+  </div>
 
   <app-answer
-    *ngFor="let answer of question.answers; let i = index"
+    *ngFor="let answer of answers | keyvalue"
     [answer]="answer"
   ></app-answer>
 
   <div class="add-answer-container">
     <h2 class="add-answer__title">Your answer</h2>
-    <form class="add-answer__form">
-      <textarea
-        class="add-answer__text"
-        name=""
-        id=""
-        cols="30"
-        rows="10"
-      ></textarea>
-      <button class="add-answer__button">Post your answer</button>
-    </form>
+    <textarea
+      class="add-answer__text"
+      name=""
+      id=""
+      cols="30"
+      rows="10"
+      [(ngModel)]="answerBody"
+    ></textarea>
+    <button class="add-answer__button" (click)="onSubmit()">
+      Post your answer
+    </button>
   </div>
 </div>

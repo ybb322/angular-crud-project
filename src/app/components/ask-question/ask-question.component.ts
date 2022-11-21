@@ -25,7 +25,7 @@ export class AskQuestionComponent implements OnInit {
     title: '',
     description: '',
     author: '',
-    answers: [''],
+    answers: [],
   };
 
   ngOnInit(): void {

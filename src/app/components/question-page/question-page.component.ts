@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
+import { AnswerService } from 'src/app/services/answer.service';
 
 @Component({
   selector: 'app-question-page',
@@ -11,10 +13,15 @@ import { switchMap } from 'rxjs/operators';
 export class QuestionPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
-    private questionsService: QuestionsService
+    private questionsService: QuestionsService,
+    private authService: AuthService,
+    private answerService: AnswerService
   ) {}
   id!: string;
   question!: any;
+  answers!: object;
+  answerAuthor: any = '';
+  answerBody!: '';
 
   ngOnInit() {
     this.route.paramMap
@@ -24,6 +31,17 @@ export class QuestionPageComponent implements OnInit {
       });
     this.route.data.subscribe((questions) => {
       this.question = questions['question'][this.id];
+      // console.log(questions['question'][this.id]);
+      this.answers = questions['question'][this.id].answers;
+      console.log(this.answers);
     });
+    this.route.data.subscribe((user: any) => {
+      console.log(user.user.displayName);
+      this.answerAuthor = user.user.displayName;
+    });
+  }
+
+  onSubmit() {
+    this.answerService.submit(this.id, this.answerBody, this.answerAuthor);
   }
 }

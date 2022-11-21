@@ -26,6 +26,7 @@ const routes: Routes = [
     component: QuestionPageComponent,
     resolve: {
       question: QuestionService,
+      user: AuthService,
     },
   },
   {

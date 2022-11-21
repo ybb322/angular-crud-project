@@ -86,10 +86,10 @@ export class AuthService implements Resolve<any> {
         console.log(user);
         this.currentUser$.next(auth.currentUser);
         return user;
-      } else {
-        console.log('noone logged in');
-        return null;
       }
+      console.log('noone logged in');
+      this.currentUser$.next(auth.currentUser);
+      return null;
     });
   }
 }
