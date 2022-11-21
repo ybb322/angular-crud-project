@@ -1,13 +1,13 @@
 <div class="question-container">
   <div class="question">
-    <a class="question__title" [routerLink]="['question', question.id]">
-      {{ question.title }}
+    <a class="question__title" [routerLink]="['question', question.key]">
+      {{ question.value.title }}
     </a>
     <p class="question__description">
-      {{ question.description }}
+      {{ question.value.description }}
     </p>
     <div class="question__details">
-      <p class="question__asked-by">by {{ question.author }}</p>
+      <p class="question__asked-by">by {{ question.value.author }}</p>
       <p class="question__asked-when">{{ question.date }}</p>
     </div>
   </div>

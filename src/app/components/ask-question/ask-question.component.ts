@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from 'src/app/services/auth.service';
-import { take } from 'rxjs';
-import { UserService } from 'src/app/services/user.service';
+import { ActivatedRoute } from '@angular/router';
+import { AskQuestionService } from 'src/app/services/ask-question.service';
 
 @Component({
   selector: 'app-ask-question',
@@ -13,12 +12,9 @@ import { UserService } from 'src/app/services/user.service';
 export class AskQuestionComponent implements OnInit {
   constructor(
     private http: HttpClient,
-    private authService: AuthService,
-    private userService: UserService
+    private route: ActivatedRoute,
+    private askQuestionService: AskQuestionService
   ) {}
-
-  url: string =
-    'https://helpdesk-31970-default-rtdb.europe-west1.firebasedatabase.app/questions.json';
 
   questionForm: FormGroup = new FormGroup({
     title: new FormControl(),
@@ -29,19 +25,18 @@ export class AskQuestionComponent implements OnInit {
     title: '',
     description: '',
     author: '',
+    answers: [''],
   };
 
   ngOnInit(): void {
-    console.log('NG ON INIT!!!');
+    this.route.data.subscribe((user: any) => {
+      this.question.author = user.user.displayName;
+    });
   }
 
   onSubmit() {
     this.question.title = this.questionForm.value.title;
     this.question.description = this.questionForm.value.description;
-    this.question.author = this.userService.user.name;
-    console.log(this.question);
-    this.http
-      .post(this.url, this.question)
-      .subscribe((response) => console.log(response));
+    this.askQuestionService.onSubmit(this.question);
   }
 }

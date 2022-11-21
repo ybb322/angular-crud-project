@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { IQuestion } from 'src/app/interfaces/question.interface';
 
 @Component({
   selector: 'app-question-page',
@@ -14,13 +13,17 @@ export class QuestionPageComponent implements OnInit {
     private route: ActivatedRoute,
     private questionsService: QuestionsService
   ) {}
-  id!: number;
-  question!: IQuestion;
+  id!: string;
+  question!: any;
 
   ngOnInit() {
     this.route.paramMap
       .pipe(switchMap((params) => params.getAll('id')))
-      .subscribe((data) => (this.id = +data));
-    this.question = this.questionsService.getQuestion(this.id);
+      .subscribe((data) => {
+        this.id = data;
+      });
+    this.route.data.subscribe((questions) => {
+      this.question = questions['question'][this.id];
+    });
   }
 }

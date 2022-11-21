@@ -20,7 +20,6 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     NavComponent,
-
     QuestionsComponent,
     QuestionComponent,
     QuestionPageComponent,

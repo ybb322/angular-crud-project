@@ -17,14 +17,15 @@ export class UserPageComponent implements OnInit {
     private authService: AuthService,
     private route: ActivatedRoute
   ) {}
-  //TODO: Fix everything blyat
-  user: any = {
-    name: '',
-    email: '',
-  };
+
+  name: string = '';
+  email: string = '';
 
   ngOnInit(): void {
-    this.user.name = this.userService.user.name;
-    this.user.email = this.userService.user.email;
+    this.route.data.subscribe((user: any) => {
+      console.log(user);
+      this.name = user.user.displayName;
+      this.email = user.user.email;
+    });
   }
 }

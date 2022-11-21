@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionsService } from 'src/app/services/questions.service';
-import { IQuestion } from 'src/app/interfaces/question.interface';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-questions',
@@ -8,11 +8,16 @@ import { IQuestion } from 'src/app/interfaces/question.interface';
   styleUrls: ['./questions.component.scss'],
 })
 export class QuestionsComponent implements OnInit {
-  constructor(private questionsService: QuestionsService) {}
+  constructor(
+    private questionsService: QuestionsService,
+    private route: ActivatedRoute
+  ) {}
 
-  questions: IQuestion[] = [];
+  questions!: object;
 
   ngOnInit(): void {
-    this.questions = this.questionsService.getQuestions;
+    this.route.data.subscribe((questions: any) => {
+      this.questions = questions.questions;
+    });
   }
 }

@@ -1,5 +1,5 @@
-import { Injectable, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { Resolve, Router } from '@angular/router';
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -9,14 +9,19 @@ import {
   User,
   updateProfile,
 } from 'firebase/auth';
-import { Subject, take } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthService implements Resolve<any> {
   constructor(private router: Router) {}
+  resolve() {
+    this.checkAuth();
+    return this.currentUser$;
+  }
 
+  isAuth: boolean = false;
   isAuth$ = new Subject<boolean>();
   currentUser$ = new Subject<User | null>();
 
@@ -76,11 +81,14 @@ export class AuthService {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(auth);
+        this.isAuth = true;
         this.isAuth$.next(true);
+        console.log(user);
         this.currentUser$.next(auth.currentUser);
-        console.log(auth.currentUser);
+        return user;
       } else {
+        console.log('noone logged in');
+        return null;
       }
     });
   }
