@@ -21,8 +21,6 @@ export class AuthService implements Resolve<any> {
     return this.currentUser$;
   }
 
-  isAuth: boolean = false;
-  isAuth$ = new Subject<boolean>();
   currentUser$ = new Subject<User | null>();
 
   signUp(email: string, password: string, name: string) {
@@ -32,24 +30,14 @@ export class AuthService implements Resolve<any> {
         const user = userCredential.user;
         this.setUsername(name);
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(error);
-      });
+      .catch((error) => {});
   }
 
   setUsername(name: string) {
     const auth = getAuth();
     updateProfile(auth.currentUser!, {
       displayName: name,
-    })
-      .then(() => {
-        console.log(auth.currentUser);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    });
   }
 
   login(email: string, password: string) {
@@ -59,10 +47,7 @@ export class AuthService implements Resolve<any> {
         this.router.navigate(['']);
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(error.code);
-        console.log(error.message);
+        console.log(error);
       });
   }
 
@@ -70,7 +55,7 @@ export class AuthService implements Resolve<any> {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
-        this.isAuth$.next(false);
+        this.currentUser$.next(null);
       })
       .catch((error) => {
         console.log(error);
@@ -81,8 +66,6 @@ export class AuthService implements Resolve<any> {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        this.isAuth = true;
-        this.isAuth$.next(true);
         console.log(user);
         this.currentUser$.next(auth.currentUser);
         return user;

@@ -11,7 +11,5 @@ export class AnswerComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.answer);
-  }
+  ngOnInit(): void {}
 }

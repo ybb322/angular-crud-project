@@ -17,8 +17,12 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.checkAuth();
-    this.authService.isAuth$.subscribe((value) => {
-      this.isAuth = value;
+    this.authService.currentUser$.subscribe((user) => {
+      if (user) {
+        this.isAuth = true;
+      } else {
+        this.isAuth = false;
+      }
     });
   }
 

@@ -8,11 +8,7 @@ export class AskQuestionService {
 
   url: string =
     'https://helpdesk-31970-default-rtdb.europe-west1.firebasedatabase.app/questions.json';
-
   onSubmit(question: any) {
-    console.log(question);
-    this.http
-      .post(this.url, question)
-      .subscribe((response) => console.log(response));
+    this.http.post(this.url, question).subscribe();
   }
 }

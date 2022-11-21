@@ -23,7 +23,6 @@ export class UserPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe((user: any) => {
-      console.log(user);
       this.name = user.user.displayName;
       this.email = user.user.email;
     });

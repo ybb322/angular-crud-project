@@ -31,12 +31,9 @@ export class QuestionPageComponent implements OnInit {
       });
     this.route.data.subscribe((questions) => {
       this.question = questions['question'][this.id];
-      // console.log(questions['question'][this.id]);
       this.answers = questions['question'][this.id].answers;
-      console.log(this.answers);
     });
     this.route.data.subscribe((user: any) => {
-      console.log(user.user.displayName);
       this.answerAuthor = user.user.displayName;
     });
   }
