@@ -25,6 +25,9 @@
       formControlName="repeatPassword"
     />
     <button class="sign-up__button" (click)="onSubmit()">Sign Up</button>
-    <button (click)="checkAuth()">checkAuth</button>
   </form>
+  <div class="not-auth__message">
+    Already have an account? <br />
+    <span class="login__link" routerLink="/login">Log In</span>
+  </div>
 </div>

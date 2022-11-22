@@ -12,6 +12,8 @@ import { UserService } from './services/user.service';
 import { AppComponent } from './app.component';
 import { QuestionsService } from './services/questions.service';
 import { QuestionService } from './services/question.service';
+import { IsNotAuthGuard } from './guards/isNotAuth.guard';
+import { IsAuthGuard } from './guards/isAuth.guard';
 
 const routes: Routes = [
   {
@@ -24,33 +26,38 @@ const routes: Routes = [
   {
     path: 'question/:id',
     component: QuestionPageComponent,
-    resolve: {
-      question: QuestionService,
-      user: AuthService,
-    },
+    // resolve: {
+    //   question: QuestionService,
+    //   user: AuthService,
+    // },
   },
   {
     path: 'ask-question',
     component: AskQuestionComponent,
-    resolve: {
-      user: AuthService,
-    },
+    canActivate: [IsAuthGuard],
+    // resolve: {
+    //   user: AuthService,
+    // },
   },
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [IsNotAuthGuard],
   },
   {
     path: 'sign-up',
     component: SignUpComponent,
+    canActivate: [IsNotAuthGuard],
   },
   {
     path: 'user-page',
     component: UserPageComponent,
-    resolve: {
-      user: AuthService,
-    },
+    canActivate: [IsAuthGuard],
+    // resolve: {
+    //   user: AuthService,
+    // },
   },
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({

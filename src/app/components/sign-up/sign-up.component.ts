@@ -53,7 +53,4 @@ export class SignUpComponent implements OnInit {
       this.signUpForm.value.name
     );
   }
-  checkAuth() {
-    this.authService.checkAuth();
-  }
 }

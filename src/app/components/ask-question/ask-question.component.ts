@@ -29,14 +29,14 @@ export class AskQuestionComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.route.data.subscribe((user: any) => {
-      this.question.author = user.user.displayName;
-    });
+    const user = JSON.parse(localStorage.getItem('user')!);
+    this.question.author = user.displayName;
+    console.log(user);
   }
 
   onSubmit() {
     this.question.title = this.questionForm.value.title;
     this.question.description = this.questionForm.value.description;
-    this.askQuestionService.onSubmit(this.question);
+    this.askQuestionService.submit(this.question);
   }
 }

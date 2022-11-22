@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { AnswerService } from 'src/app/services/answer.service';
+import { QuestionService } from 'src/app/services/question.service';
 
 @Component({
   selector: 'app-question-page',
@@ -15,27 +16,34 @@ export class QuestionPageComponent implements OnInit {
     private route: ActivatedRoute,
     private questionsService: QuestionsService,
     private authService: AuthService,
-    private answerService: AnswerService
+    private answerService: AnswerService,
+    private questionService: QuestionService
   ) {}
   id!: string;
-  question!: any;
+  question: null | any;
   answers!: object;
   answerAuthor: any = '';
   answerBody!: '';
+  isAuth!: boolean;
 
   ngOnInit() {
     this.route.paramMap
       .pipe(switchMap((params) => params.getAll('id')))
       .subscribe((data) => {
         this.id = data;
+        this.questionService.getQuestion(this.id).subscribe((question: any) => {
+          this.question = question;
+          this.answers = question.answers;
+        });
       });
-    this.route.data.subscribe((questions) => {
-      this.question = questions['question'][this.id];
-      this.answers = questions['question'][this.id].answers;
-    });
-    this.route.data.subscribe((user: any) => {
-      this.answerAuthor = user.user.displayName;
-    });
+    const user = JSON.parse(localStorage.getItem('user')!);
+    if (user) {
+      this.answerAuthor = user.displayName;
+      this.isAuth = true;
+    } else {
+      this.answerAuthor = '';
+      this.isAuth = false;
+    }
   }
 
   onSubmit() {

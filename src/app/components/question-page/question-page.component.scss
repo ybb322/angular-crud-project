@@ -56,3 +56,12 @@
     align-self: end;
   }
 }
+.isNotAuth {
+  margin-top: 16px;
+  font-size: 20px;
+  span {
+    color: rgb(74, 74, 209);
+    font-weight: bold;
+    cursor: pointer;
+  }
+}

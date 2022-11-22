@@ -17,6 +17,7 @@ export class QuestionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe((questions: any) => {
+      console.log(questions);
       this.questions = questions.questions;
     });
   }

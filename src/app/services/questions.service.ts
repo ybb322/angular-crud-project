@@ -9,10 +9,13 @@ import { Resolve, Router } from '@angular/router';
 export class QuestionsService implements Resolve<any> {
   constructor(private http: HttpClient) {}
   questions$ = new Observable<Object>();
+  questions: any;
 
   resolve() {
-    this.getQuestions();
-    return this.questions$;
+    if (!this.questions) {
+      this.getQuestions();
+      return this.questions$;
+    } else return this.questions;
   }
 
   url: string =
@@ -20,5 +23,8 @@ export class QuestionsService implements Resolve<any> {
 
   getQuestions() {
     this.questions$ = this.http.get(this.url);
+    this.questions$.subscribe((response) => {
+      this.questions = response;
+    });
   }
 }

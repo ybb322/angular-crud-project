@@ -2,7 +2,8 @@
   &-container {
     margin: 0 auto;
     padding: 20px;
-    width: 50%;
+    min-width: 800px;
+    width: 60%;
     background-color: rgb(214, 214, 214);
   }
   &__title {

@@ -8,4 +8,8 @@
     <input type="password" class="login__password" formControlName="password" />
     <button class="login__button" (click)="onSubmit()">Log In</button>
   </form>
+  <div class="not-auth__message">
+    Don't have an account? <br />
+    <span class="sign-up__link" routerLink="/sign-up">Sign up</span>
+  </div>
 </div>

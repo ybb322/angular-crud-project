@@ -16,17 +16,13 @@ export class NavComponent implements OnInit {
   isAuth: boolean = false;
 
   ngOnInit(): void {
-    this.authService.checkAuth();
-    this.authService.currentUser$.subscribe((user) => {
-      if (user) {
-        this.isAuth = true;
-      } else {
-        this.isAuth = false;
-      }
-    });
+    console.log(JSON.parse(localStorage.getItem('user')!));
+    this.isAuth = JSON.parse(localStorage.getItem('user')!) ? true : false;
+    console.log(this.isAuth);
   }
 
   logout() {
     this.authService.logout();
+    window.location.reload();
   }
 }

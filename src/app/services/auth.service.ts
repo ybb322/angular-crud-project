@@ -10,18 +10,47 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { Subject } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService implements Resolve<any> {
-  constructor(private router: Router) {}
-  resolve() {
-    this.checkAuth();
-    return this.currentUser$;
+  constructor(
+    private router: Router,
+    public firestore: AngularFirestore,
+    public fireauth: AngularFireAuth
+  ) {
+    this.fireauth.authState.subscribe((user) => {
+      if (user) {
+        this.userData = user;
+        localStorage.setItem('user', JSON.stringify(user));
+        const localUser = JSON.parse(localStorage.getItem('user')!);
+        localUser.displayName
+          ? console.log(JSON.parse(localStorage.getItem('user')!))
+          : window.location.reload();
+      } else {
+        console.log(JSON.parse(localStorage.getItem('user')!));
+        localStorage.setItem('user', 'null');
+      }
+    });
   }
 
+  userData: any;
+
+  //
+  // OLD
+  // CODE
+  // BELOW
+  //
+
   currentUser$ = new Subject<User | null>();
+
+  resolve() {
+    // this.checkAuth();
+    // return this.currentUser$;
+  }
 
   signUp(email: string, password: string, name: string) {
     const auth = getAuth();
@@ -44,7 +73,7 @@ export class AuthService implements Resolve<any> {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        this.router.navigate(['']);
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
@@ -55,7 +84,7 @@ export class AuthService implements Resolve<any> {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
-        this.currentUser$.next(null);
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
@@ -63,16 +92,16 @@ export class AuthService implements Resolve<any> {
   }
 
   checkAuth() {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log(user);
-        this.currentUser$.next(auth.currentUser);
-        return user;
-      }
-      console.log('noone logged in');
-      this.currentUser$.next(auth.currentUser);
-      return null;
-    });
+    // const auth = getAuth();
+    // onAuthStateChanged(auth, (user) => {
+    //   if (user) {
+    //     console.log(user);
+    //     this.currentUser$.next(auth.currentUser);
+    //     return user;
+    //   }
+    //   console.log('noone logged in');
+    //   this.currentUser$.next(auth.currentUser);
+    //   return null;
+    // });
   }
 }
