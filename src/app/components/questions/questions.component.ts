@@ -16,9 +16,13 @@ export class QuestionsComponent implements OnInit {
   questions!: object;
 
   ngOnInit(): void {
-    this.route.data.subscribe((questions: any) => {
+    // this.route.data.subscribe((questions: any) => {
+    //   console.log(questions);
+    //   this.questions = questions.questions;
+    // });
+    this.questionsService.questions$.subscribe((questions) => {
       console.log(questions);
-      this.questions = questions.questions;
+      this.questions = questions;
     });
   }
 }

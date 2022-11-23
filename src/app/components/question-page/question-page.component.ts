@@ -23,6 +23,7 @@ export class QuestionPageComponent implements OnInit {
   question: null | any;
   answers!: object;
   answerAuthor: any = '';
+  answerAuthorId!: string;
   answerBody!: '';
   isAuth!: boolean;
 
@@ -39,6 +40,7 @@ export class QuestionPageComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('user')!);
     if (user) {
       this.answerAuthor = user.displayName;
+      this.answerAuthorId = user.uid;
       this.isAuth = true;
     } else {
       this.answerAuthor = '';
@@ -47,6 +49,11 @@ export class QuestionPageComponent implements OnInit {
   }
 
   onSubmit() {
-    this.answerService.submit(this.id, this.answerBody, this.answerAuthor);
+    this.answerService.submit(
+      this.id,
+      this.answerBody,
+      this.answerAuthor,
+      this.answerAuthorId
+    );
   }
 }

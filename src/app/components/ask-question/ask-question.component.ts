@@ -26,10 +26,12 @@ export class AskQuestionComponent implements OnInit {
     description: '',
     author: '',
     answers: [],
+    authorId: '',
   };
 
   ngOnInit(): void {
     const user = JSON.parse(localStorage.getItem('user')!);
+    this.question.authorId = user.uid;
     this.question.author = user.displayName;
     console.log(user);
   }

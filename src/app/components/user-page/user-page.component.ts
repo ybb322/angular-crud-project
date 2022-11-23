@@ -5,6 +5,7 @@ import { take } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { Input, Output } from '@angular/core';
+import { QuestionsService } from 'src/app/services/questions.service';
 
 @Component({
   selector: 'app-user-page',
@@ -12,19 +13,21 @@ import { Input, Output } from '@angular/core';
   styleUrls: ['./user-page.component.scss'],
 })
 export class UserPageComponent implements OnInit {
-  constructor(
-    private userService: UserService,
-    private authService: AuthService,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private questionsService: QuestionsService) {}
 
   name: string = '';
   email: string = '';
+  id: string = '';
 
   ngOnInit(): void {
     const user = JSON.parse(localStorage.getItem('user')!);
     console.log(user);
     this.name = user.displayName;
     this.email = user.email;
+    this.id = user.uid;
+    console.log(this.id);
+    // this.questionsService
+    //   .getSortedQuestions(this.id)
+    //   .subscribe((value) => console.log(value));
   }
 }

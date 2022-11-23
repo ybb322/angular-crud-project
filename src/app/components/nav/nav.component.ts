@@ -16,9 +16,7 @@ export class NavComponent implements OnInit {
   isAuth: boolean = false;
 
   ngOnInit(): void {
-    console.log(JSON.parse(localStorage.getItem('user')!));
     this.isAuth = JSON.parse(localStorage.getItem('user')!) ? true : false;
-    console.log(this.isAuth);
   }
 
   logout() {

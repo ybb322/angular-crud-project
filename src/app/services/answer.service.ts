@@ -10,19 +10,19 @@ export class AnswerService {
 
   private url!: string;
 
-  answerBody!: string;
-  answerAuthor!: string;
   questionId!: string;
 
   answer = {
     body: '',
     author: '',
+    authorId: '',
   };
 
-  submit(questionId: string, answer: string, author: string) {
+  submit(questionId: string, answer: string, author: string, authorId: string) {
     this.questionId = questionId;
     this.answer.body = answer;
     this.answer.author = author;
+    this.answer.authorId = authorId;
     this.url = `https://helpdesk-31970-default-rtdb.europe-west1.firebasedatabase.app/questions/${this.questionId}/answers.json`;
     this.http
       .post(this.url, this.answer)
