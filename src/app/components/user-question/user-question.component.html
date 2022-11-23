@@ -6,7 +6,13 @@
     <p class="question__description">{{ question.value.description }}</p>
   </div>
   <div class="actions">
-    <button class="question__action-button">Edit</button>
+    <button
+      class="question__action-button"
+      (click)="edit()"
+      [routerLink]="['/edit-question']"
+    >
+      Edit
+    </button>
     <button class="question__action-button" (click)="delete(question.key)">
       Delete
     </button>

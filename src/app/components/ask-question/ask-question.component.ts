@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
-import { AskQuestionService } from 'src/app/services/ask-question.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { QuestionService } from 'src/app/services/question.service';
+import { QuestionsService } from 'src/app/services/questions.service';
 
 @Component({
   selector: 'app-ask-question',
   templateUrl: './ask-question.component.html',
   styleUrls: ['./ask-question.component.scss'],
 })
-export class AskQuestionComponent implements OnInit {
+export class AskQuestionComponent implements OnInit, OnDestroy {
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
-    private askQuestionService: AskQuestionService
+    private questionService: QuestionService,
+    private questionsService: QuestionsService,
+    private router: Router
   ) {}
 
   questionForm: FormGroup = new FormGroup({
@@ -28,17 +31,42 @@ export class AskQuestionComponent implements OnInit {
     answers: [],
     authorId: '',
   };
+  questionId: null | string = null;
 
   ngOnInit(): void {
     const user = JSON.parse(localStorage.getItem('user')!);
     this.question.authorId = user.uid;
     this.question.author = user.displayName;
-    console.log(user);
+    this.questionService.editedQuestion$.subscribe((question) => {
+      if (!question) {
+        return;
+      }
+      this.questionForm.patchValue({
+        title: question.value.title,
+        description: question.value.description,
+      });
+      this.questionId = question.key;
+    });
+    console.log(this.questionId);
+  }
+
+  ngOnDestroy(): void {
+    this.questionService.editedQuestion$.next(null);
   }
 
   onSubmit() {
     this.question.title = this.questionForm.value.title;
     this.question.description = this.questionForm.value.description;
-    this.askQuestionService.submit(this.question);
+    if (this.questionId) {
+      this.questionService
+        .patch(this.question, this.questionId)
+        .subscribe(() => {
+          this.router.navigate([`/question/${this.questionId}`]);
+        });
+    } else {
+      this.questionService.post(this.question).subscribe((response: any) => {
+        this.router.navigate([`/question/${response.name}`]);
+      });
+    }
   }
 }

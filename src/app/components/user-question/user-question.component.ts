@@ -16,8 +16,12 @@ export class UserQuestionComponent implements OnInit {
     console.log(this.question);
   }
 
+  edit() {
+    this.questionService.editedQuestion$.next(this.question);
+  }
+
   delete(id: string) {
-    this.questionService.deleteQuestion(id).subscribe(() => {
+    this.questionService.delete(id).subscribe(() => {
       window.location.reload();
     });
   }

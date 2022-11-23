@@ -26,18 +26,16 @@ const routes: Routes = [
   {
     path: 'question/:id',
     component: QuestionPageComponent,
-    // resolve: {
-    //   question: QuestionService,
-    //   user: AuthService,
-    // },
   },
   {
     path: 'ask-question',
     component: AskQuestionComponent,
     canActivate: [IsAuthGuard],
-    // resolve: {
-    //   user: AuthService,
-    // },
+  },
+  {
+    path: 'edit-question',
+    component: AskQuestionComponent,
+    canActivate: [IsAuthGuard],
   },
   {
     path: 'login',
@@ -53,9 +51,6 @@ const routes: Routes = [
     path: 'user-page',
     component: UserPageComponent,
     canActivate: [IsAuthGuard],
-    // resolve: {
-    //   user: AuthService,
-    // },
   },
   // { path: '**', redirectTo: '/' },
 ];
