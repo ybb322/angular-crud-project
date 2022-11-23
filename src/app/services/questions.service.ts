@@ -12,19 +12,16 @@ export class QuestionsService implements Resolve<any> {
   questions: any;
 
   resolve() {
-    if (!this.questions) {
-      this.getQuestions();
-      return this.questions$;
-    } else return this.questions;
+    // if (!this.questions) {
+    //   this.getQuestions();
+    //   return this.questions$;
+    // } else return this.questions;
   }
 
   url: string =
     'https://helpdesk-31970-default-rtdb.europe-west1.firebasedatabase.app/questions.json';
 
   getQuestions() {
-    this.questions$ = this.http.get(this.url);
-    this.questions$.subscribe((response) => {
-      this.questions = response;
-    });
+    return this.http.get(this.url);
   }
 }

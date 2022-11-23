@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { QuestionComponent } from '../question/question.component';
 
 @Component({
   selector: 'app-user-question',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserQuestionComponent implements OnInit {
   constructor() {}
+
+  @Input() question!: any;
 
   ngOnInit(): void {}
 }

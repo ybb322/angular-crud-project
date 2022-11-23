@@ -1,4 +1,6 @@
 <div class="question-container">
-  <h1 class="question_title">title</h1>
-  <p class="question__description">description</p>
+  <a class="question__title" [routerLink]="['/question', question.key]">
+    {{ question.value.title }}
+  </a>
+  <p class="question__description">{{ question.value.description }}</p>
 </div>

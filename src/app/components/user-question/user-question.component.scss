@@ -1,7 +1,6 @@
 .question {
   &-container {
     margin: 0 auto;
-    width: 60%;
     background-color: rgb(214, 214, 214);
     padding: 32px;
     border-right: 1px solid grey;
@@ -9,10 +8,11 @@
     border-bottom: 1px solid grey;
   }
   &__title {
-    padding-top: 20px;
-    margin-bottom: 36px;
+    font-size: 20px;
   }
   &__description {
-    font-size: 24px;
+    margin-top: 8px;
+    color: rgb(70, 70, 70);
+    font-size: 16px;
   }
 }

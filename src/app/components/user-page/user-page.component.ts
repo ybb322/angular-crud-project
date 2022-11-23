@@ -18,6 +18,7 @@ export class UserPageComponent implements OnInit {
   name: string = '';
   email: string = '';
   id: string = '';
+  questions: any;
 
   ngOnInit(): void {
     const user = JSON.parse(localStorage.getItem('user')!);
@@ -25,9 +26,13 @@ export class UserPageComponent implements OnInit {
     this.name = user.displayName;
     this.email = user.email;
     this.id = user.uid;
-    console.log(this.id);
-    // this.questionsService
-    //   .getSortedQuestions(this.id)
-    //   .subscribe((value) => console.log(value));
+    this.questionsService.getQuestions().subscribe((questions) => {
+      this.questions = Object.fromEntries(
+        Object.entries(questions).filter(
+          (question) => question[1].authorId == this.id
+        )
+      );
+      console.log(this.questions);
+    });
   }
 }

@@ -57,7 +57,7 @@ const routes: Routes = [
     //   user: AuthService,
     // },
   },
-  { path: '**', redirectTo: '/' },
+  // { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({
