@@ -25,4 +25,9 @@ export class QuestionService implements Resolve<any> {
       `https://helpdesk-31970-default-rtdb.europe-west1.firebasedatabase.app/questions/${questionId}.json`
     );
   }
+  deleteQuestion(questionId: string) {
+    return this.http.delete(
+      `https://helpdesk-31970-default-rtdb.europe-west1.firebasedatabase.app/questions/${questionId}.json`
+    );
+  }
 }

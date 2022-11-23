@@ -3,12 +3,15 @@
     <h1 class="user__name">{{ name }}</h1>
     <p class="user__email">email: {{ email }}</p>
   </div>
-  <div *ngIf="questions?.length; else showQuestions" class="no-questions">
+  <div *ngIf="questions == null" class="no-questions">
     You don't have any active questions.
   </div>
-  <ng-template #showQuestions>
-    <div class="show-questions">Here are your active questions:</div>
-  </ng-template>
+  <div
+    *ngIf="(questions | json) != '{}' && questions != null"
+    class="show-questions"
+  >
+    Here are your questions:
+  </div>
   <app-user-question
     *ngFor="let question of questions | keyvalue"
     [question]="question"

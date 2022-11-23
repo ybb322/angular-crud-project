@@ -6,6 +6,8 @@
     border-right: 1px solid grey;
     border-left: 1px solid grey;
     border-bottom: 1px solid grey;
+    display: flex;
+    justify-content: space-between;
   }
   &__title {
     font-size: 20px;
@@ -15,4 +17,14 @@
     color: rgb(70, 70, 70);
     font-size: 16px;
   }
+  &__action-button {
+    font-size: 20px;
+    width: 80px;
+  }
+}
+.actions {
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

@@ -1,6 +1,14 @@
 <div class="question-container">
-  <a class="question__title" [routerLink]="['/question', question.key]">
-    {{ question.value.title }}
-  </a>
-  <p class="question__description">{{ question.value.description }}</p>
+  <div class="text-container">
+    <a class="question__title" [routerLink]="['/question', question.key]">
+      {{ question.value.title }}
+    </a>
+    <p class="question__description">{{ question.value.description }}</p>
+  </div>
+  <div class="actions">
+    <button class="question__action-button">Edit</button>
+    <button class="question__action-button" (click)="delete(question.key)">
+      Delete
+    </button>
+  </div>
 </div>
