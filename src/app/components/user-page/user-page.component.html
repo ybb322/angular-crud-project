@@ -3,9 +3,6 @@
     <h1 class="user__name">{{ name }}</h1>
     <p class="user__email">email: {{ email }}</p>
   </div>
-  <div *ngIf="questions == null" class="no-questions">
-    You don't have any active questions.
-  </div>
   <div
     *ngIf="(questions | json) != '{}' && questions != null"
     class="show-questions"

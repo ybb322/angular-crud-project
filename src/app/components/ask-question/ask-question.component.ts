@@ -47,7 +47,6 @@ export class AskQuestionComponent implements OnInit, OnDestroy {
       });
       this.questionId = question.key;
     });
-    console.log(this.questionId);
   }
 
   ngOnDestroy(): void {

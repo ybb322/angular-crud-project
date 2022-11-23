@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { QuestionService } from 'src/app/services/question.service';
-import { QuestionComponent } from '../question/question.component';
 
 @Component({
   selector: 'app-user-question',
@@ -12,9 +11,7 @@ export class UserQuestionComponent implements OnInit {
 
   @Input() question!: any;
 
-  ngOnInit(): void {
-    console.log(this.question);
-  }
+  ngOnInit(): void {}
 
   edit() {
     this.questionService.editedQuestion$.next(this.question);

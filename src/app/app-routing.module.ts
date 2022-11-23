@@ -6,12 +6,6 @@ import { QuestionsComponent } from './components/questions/questions.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
-import { AuthService } from './services/auth.service';
-import { NavComponent } from './components/nav/nav.component';
-import { UserService } from './services/user.service';
-import { AppComponent } from './app.component';
-import { QuestionsService } from './services/questions.service';
-import { QuestionService } from './services/question.service';
 import { IsNotAuthGuard } from './guards/isNotAuth.guard';
 import { IsAuthGuard } from './guards/isAuth.guard';
 
@@ -19,9 +13,6 @@ const routes: Routes = [
   {
     path: '',
     component: QuestionsComponent,
-    resolve: {
-      questions: QuestionsService,
-    },
   },
   {
     path: 'question/:id',
@@ -52,7 +43,7 @@ const routes: Routes = [
     component: UserPageComponent,
     canActivate: [IsAuthGuard],
   },
-  // { path: '**', redirectTo: '/' },
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({
