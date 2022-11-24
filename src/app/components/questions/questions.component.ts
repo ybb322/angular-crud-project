@@ -8,12 +8,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./questions.component.scss'],
 })
 export class QuestionsComponent implements OnInit {
-  constructor(
-    private questionsService: QuestionsService,
-    private route: ActivatedRoute
-  ) {}
-
-  questions!: object;
+  questions: object;
+  constructor(private questionsService: QuestionsService) {}
 
   ngOnInit(): void {
     this.questionsService.getQuestions().subscribe((questions) => {

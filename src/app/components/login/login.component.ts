@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -8,7 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', {
       validators: [Validators.required, Validators.email],
@@ -23,19 +28,17 @@ export class LoginComponent implements OnInit {
     }),
   });
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
-  get email() {
+  get email(): AbstractControl<string> | null {
     return this.loginForm.get('email');
   }
 
-  get password() {
+  get password(): AbstractControl<string> | null {
     return this.loginForm.get('password');
   }
 
-  ngOnInit(): void {}
-
-  onSubmit(event: any) {
+  onSubmit(event: any): void {
     if (event.shiftKey) {
       return;
     }

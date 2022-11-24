@@ -1,11 +1,11 @@
 <div *ngIf="question">
   <div class="container">
     <div class="question">
-      <h1 class="question__title">{{ question?.title }}</h1>
-      <p class="question__description">{{ question?.description }}</p>
+      <h1 class="question__title">{{ question.title }}</h1>
+      <p class="question__description">{{ question.description }}</p>
       <div class="question__details">
         <p class="question__author">
-          by <span> {{ question?.author }} </span>
+          by <span> {{ question.author }} </span>
         </p>
       </div>
     </div>
@@ -39,8 +39,9 @@
       <ng-template #isNotAuth>
         <div class="isNotAuth">
           <p>
-            <span routerLink="/login">Log In</span> or
-            <span routerLink="/sign-up">Sign Up</span> to post your answers!
+            <link-text text="Log In" routerLink="/login"></link-text> or
+            <link-text text="Sign Up" routerLink="/sign-up"></link-text> to post
+            your answers!
           </p>
         </div>
       </ng-template>

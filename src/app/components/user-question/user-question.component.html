@@ -1,7 +1,7 @@
 <div class="question-container">
   <div class="text-container">
     <link-text
-      text="{{ question.value.description | slice: 0:60 }}"
+      text="{{ question.value.title | slice: 0:60 }}"
       [routerLink]="['/question', question.key]"
     >
       {{ question.value.title }}

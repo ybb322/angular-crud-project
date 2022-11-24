@@ -1,9 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { QuestionService } from 'src/app/services/question.service';
-import { QuestionsService } from 'src/app/services/questions.service';
 
 @Component({
   selector: 'app-ask-question',
@@ -16,7 +14,7 @@ export class AskQuestionComponent implements OnInit, OnDestroy {
     description: new FormControl(),
   });
 
-  question: any = {
+  question = {
     title: '',
     description: '',
     author: '',
@@ -26,10 +24,7 @@ export class AskQuestionComponent implements OnInit, OnDestroy {
   questionId: null | string = null;
 
   constructor(
-    private http: HttpClient,
-    private route: ActivatedRoute,
     private questionService: QuestionService,
-    private questionsService: QuestionsService,
     private router: Router
   ) {}
 
@@ -53,7 +48,7 @@ export class AskQuestionComponent implements OnInit, OnDestroy {
     this.questionService.editedQuestion$.next(null);
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.question.title = this.questionForm.value.title;
     this.question.description = this.questionForm.value.description;
     if (this.questionId) {

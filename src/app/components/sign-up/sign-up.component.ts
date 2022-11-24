@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 @Component({
@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
   signUpForm: FormGroup = new FormGroup({
     name: new FormControl('', {
       validators: [Validators.required, Validators.minLength(4)],
@@ -24,29 +24,23 @@ export class SignUpComponent implements OnInit {
       ],
       updateOn: 'blur',
     }),
-    //TODO: add validation to confirm passwords match
-    repeatPassword: new FormControl('', {
-      validators: [Validators.required],
-      updateOn: 'blur',
-    }),
   });
 
   constructor(private authService: AuthService) {}
 
-  get name() {
+  get name(): AbstractControl | null {
     return this.signUpForm.get('name');
   }
 
-  get email() {
+  get email(): AbstractControl | null {
     return this.signUpForm.get('email');
   }
 
-  get password() {
+  get password(): AbstractControl | null {
     return this.signUpForm.get('password');
   }
-  ngOnInit(): void {}
 
-  onSubmit(event: any) {
+  onSubmit(event: any): void {
     if (event.shiftKey) {
       return;
     }

@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 export class QuestionsService {
   constructor(private http: HttpClient) {}
   questions$ = new Observable<Object>();
-  questions: any;
+  questions = {};
 
   url: string =
     'https://helpdesk-31970-default-rtdb.europe-west1.firebasedatabase.app/questions.json';
 
-  getQuestions() {
+  getQuestions(): Observable<Object> {
     return this.http.get(this.url);
   }
 }

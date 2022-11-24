@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Input } from '@angular/core';
+import { IAnswer } from 'src/app/interfaces/answer.interface';
 
 @Component({
   selector: 'app-answer',
   templateUrl: './answer.component.html',
   styleUrls: ['./answer.component.scss'],
 })
-export class AnswerComponent implements OnInit {
-  @Input() answer!: any;
-
-  constructor() {}
-
-  ngOnInit(): void {}
+export class AnswerComponent {
+  @Input() answer: IAnswer;
 }

@@ -10,8 +10,6 @@ import { initializeApp } from 'firebase/app';
 export class AppComponent implements OnInit {
   test: string = '';
 
-  constructor() {}
-
   ngOnInit(): void {
     initializeApp(firebaseConfig);
   }
