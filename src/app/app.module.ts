@@ -27,6 +27,7 @@ import { NavButtonComponent } from './visuals/nav-button/nav-button.component';
 import { ActionButtonComponent } from './visuals/action-button/action-button.component';
 import { DeleteButtonComponent } from './visuals/delete-button/delete-button.component';
 import { LinkComponent } from './visuals/link/link.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { LinkComponent } from './visuals/link/link.component';
     ActionButtonComponent,
     DeleteButtonComponent,
     LinkComponent,
+    FooterComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

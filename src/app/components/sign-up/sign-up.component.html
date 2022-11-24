@@ -18,12 +18,6 @@
     <div *ngIf="password?.errors?.['pattern']">
       Password must be min. 6 characters long, containing 1 letter and 1 number.
     </div>
-    <p>Repeat password</p>
-    <input
-      type="password"
-      class="sign-up__password"
-      formControlName="repeatPassword"
-    />
     <action-button text="Sign Up" class="sign-up__button" (click)="onSubmit()"
       >Sign Up</action-button
     >
