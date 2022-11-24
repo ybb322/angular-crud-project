@@ -1,20 +1,18 @@
 .question {
   &-container {
     margin: 0 auto;
-    background-color: rgb(214, 214, 214);
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background: #cae4c5;
+    border-radius: 8px;
     padding: 32px;
-    border-right: 1px solid grey;
-    border-left: 1px solid grey;
-    border-bottom: 1px solid grey;
+    height: 120px;
     display: flex;
     justify-content: space-between;
   }
-  &__title {
-    font-size: 20px;
-  }
   &__description {
-    margin-top: 8px;
-    color: rgb(70, 70, 70);
+    margin-top: 4px;
+    color: rgb(90, 91, 97);
     font-size: 16px;
   }
   &__action-button {
@@ -22,9 +20,13 @@
     width: 80px;
   }
 }
+.text-container {
+  width: 60%;
+}
+
 .actions {
-  width: 180px;
+  width: 240px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }

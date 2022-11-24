@@ -1,0 +1,20 @@
+button {
+  font-size: 20px;
+  min-width: 100px;
+  min-height: 36px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: white;
+  border: 2px solid #e9998f;
+  color: #e9998f;
+  font-weight: bold;
+  transition: 0.15s all ease;
+  &:hover {
+    color: #e08d81;
+    border: 2px solid #e08d81;
+  }
+  &:active {
+    color: #ca6052;
+    border: 2px solid #ca6052;
+  }
+}

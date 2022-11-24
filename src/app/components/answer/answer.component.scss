@@ -1,16 +1,22 @@
 .answer {
-  background-color: antiquewhite;
+  background-color: rgb(212, 247, 167);
+  border-radius: 8px;
   padding: 16px 32px;
+  min-height: 100px;
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid rgb(177, 177, 177);
-  border-right: 1px solid rgb(177, 177, 177);
-  border-left: 1px solid rgb(177, 177, 177);
 
   &__text {
     font-size: 20px;
   }
   &__details {
     align-self: end;
+  }
+  &__author {
+    font-size: 16px;
+    color: rgb(121, 121, 124);
+    span {
+      font-weight: bold;
+    }
   }
 }

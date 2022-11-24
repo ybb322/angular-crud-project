@@ -1,22 +1,27 @@
 .ask-question {
   &-container {
     margin: 0 auto;
+    margin-top: 16px;
     padding: 20px;
     min-width: 800px;
     width: 60%;
-    background-color: rgb(214, 214, 214);
+    background: #cae4c5;
+    border-radius: 8px;
   }
   &__title {
-    font-size: 30px;
+    font-size: 24px;
+    color: #2e375c;
   }
   &__inputs {
-    margin-top: 24px;
+    margin-top: 20px;
   }
   &__description {
     resize: none;
   }
   &__details {
-    margin-top: 16px;
+    color: #2e375c;
+    margin-top: 20px;
+    margin-bottom: 4px;
     font-size: 20px;
   }
 }
@@ -26,19 +31,20 @@ form {
   flex-direction: column;
 }
 
-.title-input,
-.tags-input {
+.title-input {
+  padding: 4px;
   margin-top: 4px;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .submit-button {
   margin-top: 32px;
   width: 100px;
-  font-size: 24px;
+  font-size: 16px;
 }
 
 textarea {
-  font-size: 20px;
+  padding: 4px;
+  font-size: 16px;
   margin-top: 4px;
 }

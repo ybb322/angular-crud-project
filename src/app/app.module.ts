@@ -23,6 +23,10 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { UserQuestionComponent } from './components/user-question/user-question.component';
+import { NavButtonComponent } from './visuals/nav-button/nav-button.component';
+import { ActionButtonComponent } from './visuals/action-button/action-button.component';
+import { DeleteButtonComponent } from './visuals/delete-button/delete-button.component';
+import { LinkComponent } from './visuals/link/link.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +41,10 @@ import { UserQuestionComponent } from './components/user-question/user-question.
     LoginComponent,
     SignUpComponent,
     UserPageComponent,
+    NavButtonComponent,
+    ActionButtonComponent,
+    DeleteButtonComponent,
+    LinkComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

@@ -3,8 +3,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
-  background: rgb(172, 172, 172);
+  padding: 12px 36px;
+  background: #ffd4bb;
   position: sticky;
   top: 0;
 }
@@ -16,18 +16,11 @@
     align-items: center;
   }
   &__logo {
+    color: #557240;
     font-size: 32px;
-    font-weight: bold;
     margin-right: 40px;
     user-select: none;
     cursor: pointer;
-  }
-  &__search {
-    width: 240px;
-    padding: 4px;
-    font-size: 20px;
-    margin-left: 40px;
-    margin-right: 16px;
   }
 
   &__actions .button-ask {

@@ -1,13 +1,16 @@
 <div class="question-container">
-  <div class="question">
-    <a class="question__title" [routerLink]="['question', question.key]">
-      {{ question.value.title }}
-    </a>
-    <p class="question__description">
-      {{ question.value.description }}
+  <link-text
+    class="question__title"
+    text="{{ question.value.description | slice: 0:60 }}"
+    [routerLink]="['question', question.key]"
+  >
+  </link-text>
+  <p class="question__description">
+    {{ question.value.description | slice: 0:200 }}
+  </p>
+  <div class="question__details">
+    <p class="question__author">
+      by <span> {{ question.value.author }}</span>
     </p>
-    <div class="question__details">
-      <p class="question__asked-by">by {{ question.value.author }}</p>
-    </div>
   </div>
 </div>

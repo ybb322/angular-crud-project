@@ -1,22 +1,16 @@
 <div class="nav-container">
   <div class="nav__logo-container">
     <span class="nav__logo" routerLink="">HelpDesk</span>
-    <button class="nav__button button-ask" routerLink="/ask-question">
-      Ask Question
-    </button>
+    <nav-button text="Ask Question" routerLink="/ask-question"></nav-button>
   </div>
   <div class="nav__actions">
     <ng-container *ngIf="!isAuth; else elseBlock" class="buttons__default">
-      <button class="nav__button button-login" routerLink="/login">
-        Log In
-      </button>
-      <button class="nav__button button-signup" routerLink="/sign-up">
-        Sign Up
-      </button>
+      <nav-button text="Login" routerLink="/login"></nav-button>
+      <nav-button text="Sign Up" routerLink="/sign-up"></nav-button>
     </ng-container>
     <ng-template #elseBlock>
-      <button class="nav__button" (click)="logout()">Log Out</button>
-      <button class="nav__button" routerLink="/user-page">My Profile</button>
+      <nav-button (click)="logout()" text="Logout"></nav-button>
+      <nav-button routerLink="/user-page" text="My Profile"></nav-button>
     </ng-template>
   </div>
 </div>

@@ -1,5 +1,6 @@
 body {
   margin: 0 auto;
+  background: #eff8ed;
 }
 
 body,
@@ -22,4 +23,14 @@ button,
 input:active,
 :focus {
   outline: none;
+  box-shadow: none;
+  outline: none;
+  border: none;
+}
+input,
+textarea {
+  border: none;
+  &::placeholder {
+    color: #a0a0a0;
+  }
 }

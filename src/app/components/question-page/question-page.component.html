@@ -4,7 +4,9 @@
       <h1 class="question__title">{{ question?.title }}</h1>
       <p class="question__description">{{ question?.description }}</p>
       <div class="question__details">
-        <p class="question__author">by {{ question?.author }}</p>
+        <p class="question__author">
+          by <span> {{ question?.author }} </span>
+        </p>
       </div>
     </div>
     <div class="no-answers" *ngIf="!question?.answers">
@@ -26,13 +28,14 @@
         rows="10"
         [(ngModel)]="answerBody"
       ></textarea>
-      <button
+      <action-button
+        text="Post your answer"
         *ngIf="isAuth; else isNotAuth"
         class="add-answer__button"
         (click)="onSubmit()"
       >
         Post your answer
-      </button>
+      </action-button>
       <ng-template #isNotAuth>
         <div class="isNotAuth">
           <p>

@@ -6,7 +6,11 @@
     <input type="email" class="login__email" formControlName="email" />
     <p>Password</p>
     <input type="password" class="login__password" formControlName="password" />
-    <button class="login__button" (click)="onSubmit()">Log In</button>
+    <action-button
+      text="Login"
+      class="login__button"
+      (click)="onSubmit()"
+    ></action-button>
   </form>
   <div class="not-auth__message">
     Don't have an account? <br />

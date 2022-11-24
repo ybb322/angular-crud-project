@@ -1,0 +1,18 @@
+button {
+  font-size: 20px;
+  min-width: 120px;
+  min-height: 36px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #96bb7c;
+  color: white;
+  font-weight: bold;
+  transition: 0.15s all ease;
+  margin: 8px;
+  &:hover {
+    background: #82a866;
+  }
+  &:active {
+    background: #557240;
+  }
+}

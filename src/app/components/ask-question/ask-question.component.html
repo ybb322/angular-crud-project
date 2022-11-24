@@ -16,7 +16,11 @@
         placeholder="Provide the details of your problem (steps to reproduce, examples etc.) "
         formControlName="description"
       ></textarea>
-      <button class="submit-button" (click)="onSubmit()">Submit</button>
+      <action-button
+        text="Submit"
+        class="submit-button"
+        (click)="onSubmit()"
+      ></action-button>
     </form>
   </div>
 </div>
