@@ -6,9 +6,9 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class QuestionService {
-  constructor(private http: HttpClient) {}
-
   editedQuestion$: BehaviorSubject<any> = new BehaviorSubject(null);
+
+  constructor(private http: HttpClient) {}
 
   post(question: any) {
     return this.http.post(

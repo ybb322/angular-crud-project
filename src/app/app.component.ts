@@ -8,9 +8,10 @@ import { initializeApp } from 'firebase/app';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  test: string = '';
+
   constructor() {}
 
-  test: string = '';
   ngOnInit(): void {
     initializeApp(firebaseConfig);
   }

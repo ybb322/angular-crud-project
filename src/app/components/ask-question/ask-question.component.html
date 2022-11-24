@@ -2,7 +2,7 @@
   <h1 class="ask-question__title">Ask a Question</h1>
   <div class="ask-question__inputs">
     <p class="ask-question__details">Title</p>
-    <form [formGroup]="questionForm">
+    <form [formGroup]="questionForm" (keydown.enter)="$event.preventDefault()">
       <input
         class="title-input"
         type="text"

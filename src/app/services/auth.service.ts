@@ -22,6 +22,7 @@ export class AuthService {
         localStorage.setItem('user', JSON.stringify(user));
         const localUser = JSON.parse(localStorage.getItem('user')!);
         if (!localUser.displayName) {
+          console.log('reload on auth');
           window.location.reload();
         }
       } else {

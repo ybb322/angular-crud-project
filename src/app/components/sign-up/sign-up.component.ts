@@ -8,8 +8,6 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-  constructor(private authService: AuthService) {}
-
   signUpForm: FormGroup = new FormGroup({
     name: new FormControl('', {
       validators: [Validators.required, Validators.minLength(4)],
@@ -33,6 +31,8 @@ export class SignUpComponent implements OnInit {
     }),
   });
 
+  constructor(private authService: AuthService) {}
+
   get name() {
     return this.signUpForm.get('name');
   }
@@ -46,7 +46,10 @@ export class SignUpComponent implements OnInit {
   }
   ngOnInit(): void {}
 
-  onSubmit() {
+  onSubmit(event: any) {
+    if (event.shiftKey) {
+      return;
+    }
     this.authService.signUp(
       this.signUpForm.value.email,
       this.signUpForm.value.password,

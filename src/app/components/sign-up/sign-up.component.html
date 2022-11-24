@@ -1,6 +1,10 @@
 <div class="sign-up">
   <h1 class="sign-up__title">Sign Up</h1>
-  <form class="sign-up__form" [formGroup]="signUpForm">
+  <form
+    class="sign-up__form"
+    [formGroup]="signUpForm"
+    (keydown.enter)="$event.preventDefault()"
+  >
     <p>Username</p>
     <input type="name" class="sign-up__nickname" formControlName="name" />
     <div *ngIf="name?.errors?.['minlength']">
@@ -18,7 +22,10 @@
     <div *ngIf="password?.errors?.['pattern']">
       Password must be min. 6 characters long, containing 1 letter and 1 number.
     </div>
-    <action-button text="Sign Up" class="sign-up__button" (click)="onSubmit()"
+    <action-button
+      text="Sign Up"
+      class="sign-up__button"
+      (click)="onSubmit($event)"
       >Sign Up</action-button
     >
   </form>

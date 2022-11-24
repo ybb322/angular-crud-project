@@ -1,7 +1,11 @@
 <!--TODO: fix Enter.event: Firebase error-->
 <div class="login">
   <h1 class="login__title">Log In</h1>
-  <form class="login__form" [formGroup]="loginForm">
+  <form
+    class="login__form"
+    [formGroup]="loginForm"
+    (keydown.enter)="$event.preventDefault()"
+  >
     <p>Email</p>
     <input type="email" class="login__email" formControlName="email" />
     <p>Password</p>
@@ -9,7 +13,7 @@
     <action-button
       text="Login"
       class="login__button"
-      (click)="onSubmit()"
+      (click)="onSubmit($event)"
     ></action-button>
   </form>
   <div class="not-auth__message">

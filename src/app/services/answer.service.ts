@@ -6,8 +6,6 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AnswerService {
-  constructor(private http: HttpClient, private router: Router) {}
-
   private url!: string;
 
   questionId!: string;
@@ -17,6 +15,8 @@ export class AnswerService {
     author: '',
     authorId: '',
   };
+
+  constructor(private http: HttpClient, private router: Router) {}
 
   submit(questionId: string, answer: string, author: string, authorId: string) {
     this.questionId = questionId;

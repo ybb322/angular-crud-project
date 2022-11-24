@@ -7,9 +7,9 @@ import { QuestionService } from 'src/app/services/question.service';
   styleUrls: ['./user-question.component.scss'],
 })
 export class UserQuestionComponent implements OnInit {
-  constructor(private questionService: QuestionService) {}
-
   @Input() question!: any;
+
+  constructor(private questionService: QuestionService) {}
 
   ngOnInit(): void {}
 

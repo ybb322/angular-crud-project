@@ -11,14 +11,6 @@ import { QuestionsService } from 'src/app/services/questions.service';
   styleUrls: ['./ask-question.component.scss'],
 })
 export class AskQuestionComponent implements OnInit, OnDestroy {
-  constructor(
-    private http: HttpClient,
-    private route: ActivatedRoute,
-    private questionService: QuestionService,
-    private questionsService: QuestionsService,
-    private router: Router
-  ) {}
-
   questionForm: FormGroup = new FormGroup({
     title: new FormControl(),
     description: new FormControl(),
@@ -32,6 +24,14 @@ export class AskQuestionComponent implements OnInit, OnDestroy {
     authorId: '',
   };
   questionId: null | string = null;
+
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private questionService: QuestionService,
+    private questionsService: QuestionsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     const user = JSON.parse(localStorage.getItem('user')!);

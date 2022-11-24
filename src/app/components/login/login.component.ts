@@ -9,8 +9,6 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) {}
-
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', {
       validators: [Validators.required, Validators.email],
@@ -25,6 +23,8 @@ export class LoginComponent implements OnInit {
     }),
   });
 
+  constructor(private authService: AuthService, private router: Router) {}
+
   get email() {
     return this.loginForm.get('email');
   }
@@ -35,7 +35,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit() {
+  onSubmit(event: any) {
+    if (event.shiftKey) {
+      return;
+    }
     this.authService.login(
       this.loginForm.value.email,
       this.loginForm.value.password

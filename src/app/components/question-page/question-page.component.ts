@@ -12,13 +12,6 @@ import { QuestionService } from 'src/app/services/question.service';
   styleUrls: ['./question-page.component.scss'],
 })
 export class QuestionPageComponent implements OnInit {
-  constructor(
-    private route: ActivatedRoute,
-    private questionsService: QuestionsService,
-    private authService: AuthService,
-    private answerService: AnswerService,
-    private questionService: QuestionService
-  ) {}
   id!: string;
   question: null | any;
   answers!: object;
@@ -26,6 +19,14 @@ export class QuestionPageComponent implements OnInit {
   answerAuthorId!: string;
   answerBody!: '';
   isAuth!: boolean;
+
+  constructor(
+    private route: ActivatedRoute,
+    private questionsService: QuestionsService,
+    private authService: AuthService,
+    private answerService: AnswerService,
+    private questionService: QuestionService
+  ) {}
 
   ngOnInit() {
     this.route.paramMap

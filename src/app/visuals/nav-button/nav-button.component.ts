@@ -6,9 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./nav-button.component.scss'],
 })
 export class NavButtonComponent implements OnInit {
-  constructor() {}
-
   @Input() text!: string;
+
+  constructor() {}
 
   ngOnInit(): void {}
 }
